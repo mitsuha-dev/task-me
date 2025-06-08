@@ -221,5 +221,3 @@ Proyek ini dikembangkan oleh:
 **mitsuha.dev**
 
 ---
-
-Let me know if you want more adjustments, English translation, or additional sections!
