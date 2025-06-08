@@ -1,7 +1,3 @@
-Here is a more structured and well-formatted version of your README.md. Headings, lists, and code blocks have been improved for clarity and readability.
-
----
-
 # TaskMe: Pengelola Tugas Pribadi
 
 TaskMe adalah aplikasi web sederhana yang dirancang untuk membantu pengguna mengelola daftar tugas pribadi mereka secara efisien. Aplikasi ini menyediakan fungsionalitas dasar seperti registrasi, login, manajemen tugas, dan pengelolaan profil pengguna.
