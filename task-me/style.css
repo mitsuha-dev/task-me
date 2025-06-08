@@ -1,0 +1,390 @@
+/* style.css */
+
+/**
+ * File ini berisi semua styling CSS untuk aplikasi TaskMe.
+ * Ini mendefinisikan variabel CSS, gaya dasar, tata letak,
+ * dan gaya untuk berbagai komponen seperti header, form, daftar tugas,
+ * pesan, footer, serta penyesuaian responsif.
+ */
+
+/* Definisi Variabel CSS (Custom Properties) */
+/* Variabel ini memudahkan pengelolaan warna, ukuran, dan properti lainnya
+   secara konsisten di seluruh aplikasi. */
+:root {
+    --primary-color: #4F46E5; /* Warna utama aplikasi (Indigo) */
+    --primary-dark: #4338CA;  /* Warna indigo yang lebih gelap */
+    --secondary-color: #6366F1; /* Warna indigo yang lebih terang */
+    --accent-color: #EC4899; /* Warna aksen (Pink) */
+    --text-color: #333;       /* Warna teks utama */
+    --light-gray: #F3F4F6;    /* Abu-abu terang untuk latar belakang */
+    --medium-gray: #D1D5DB;   /* Abu-abu sedang untuk border/garis */
+    --dark-gray: #4B5563;     /* Abu-abu gelap untuk teks sekunder/footer */
+    --success-color: #10B981; /* Hijau untuk pesan sukses */
+    --error-color: #EF4444;   /* Merah untuk pesan error */
+    --border-radius: 0.75rem; /* Radius sudut membulat (sekitar 12px) */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Gaya bayangan */
+    --transition-speed: 0.3s; /* Kecepatan transisi untuk efek hover/fokus */
+}
+
+/* Reset CSS Dasar */
+/* Mengatur ulang margin dan padding default browser untuk konsistensi. */
+* {
+    box-sizing: border-box; /* Memastikan padding dan border termasuk dalam total lebar/tinggi elemen */
+    margin: 0;               /* Menghapus margin default */
+    padding: 0;              /* Menghapus padding default */
+}
+
+/* Gaya untuk Body Halaman */
+body {
+    font-family: 'Inter', sans-serif; /* Menggunakan font Inter dari Google Fonts */
+    background-color: var(--light-gray); /* Latar belakang halaman */
+    color: var(--text-color);         /* Warna teks default */
+    line-height: 1.6;                 /* Tinggi baris untuk keterbacaan teks */
+    display: flex;                    /* Menggunakan flexbox untuk tata letak utama */
+    flex-direction: column;           /* Elemen ditumpuk secara vertikal */
+    min-height: 100vh;                /* Memastikan body memenuhi tinggi viewport minimal */
+}
+
+/* Gaya untuk Kontainer Utama */
+/* Kontainer ini membungkus sebagian besar konten halaman. */
+.container {
+    max-width: 960px;                 /* Lebar maksimum kontainer */
+    margin: 2rem auto;                /* Margin atas/bawah 2rem, auto untuk tengah horizontal */
+    padding: 1.5rem;                  /* Padding di dalam kontainer */
+    background-color: #fff;           /* Latar belakang putih */
+    border-radius: var(--border-radius); /* Sudut membulat */
+    box-shadow: var(--shadow);        /* Bayangan */
+    flex-grow: 1;                     /* Memungkinkan kontainer untuk mengambil ruang yang tersedia */
+}
+
+/* Gaya untuk Header Aplikasi */
+header {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); /* Gradien warna latar belakang */
+    color: #fff;                      /* Warna teks putih */
+    padding: 1rem 0;                  /* Padding atas/bawah 1rem, tanpa padding samping */
+    text-align: center;               /* Teks di tengah */
+    border-bottom-left-radius: var(--border-radius);  /* Sudut bawah kiri membulat */
+    border-bottom-right-radius: var(--border-radius); /* Sudut bawah kanan membulat */
+    box-shadow: var(--shadow);        /* Bayangan */
+    margin-bottom: 2rem;              /* Margin bawah */
+}
+
+header h1 {
+    font-size: 2.5rem;                /* Ukuran font untuk judul utama */
+    margin-bottom: 0.5rem;            /* Margin bawah */
+    font-weight: 700;                 /* Ketebalan font */
+}
+
+header p {
+    font-size: 1.1rem;                /* Ukuran font untuk paragraf di header */
+    opacity: 0.9;                     /* Sedikit transparan */
+}
+
+/* Gaya untuk Navigasi */
+nav {
+    display: flex;                    /* Menggunakan flexbox untuk item navigasi */
+    justify-content: center;          /* Item navigasi di tengah secara horizontal */
+    gap: 1.5rem;                      /* Jarak antar item navigasi */
+    margin-top: 1rem;                 /* Margin atas */
+}
+
+nav a, .nav-button {
+    color: #fff;                      /* Warna teks putih */
+    text-decoration: none;            /* Menghilangkan garis bawah link */
+    font-weight: 500;                 /* Ketebalan font */
+    padding: 0.5rem 1rem;             /* Padding di dalam link/tombol */
+    border-radius: 0.5rem;            /* Sudut membulat */
+    transition: background-color var(--transition-speed) ease; /* Transisi untuk efek hover */
+}
+
+nav a:hover, .nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Latar belakang transparan saat hover */
+}
+
+.nav-button {
+    background: none;                 /* Menghilangkan latar belakang default tombol */
+    border: none;                     /* Menghilangkan border default tombol */
+    cursor: pointer;                  /* Mengubah kursor menjadi pointer */
+    font-size: 1rem;                  /* Ukuran font */
+    font-family: 'Inter', sans-serif; /* Menggunakan font Inter */
+}
+
+/* Gaya untuk Judul H2 */
+h2 {
+    font-size: 2rem;                  /* Ukuran font untuk judul H2 */
+    color: var(--primary-dark);       /* Warna dari variabel primary-dark */
+    margin-bottom: 1.5rem;            /* Margin bawah */
+    text-align: center;               /* Teks di tengah */
+    font-weight: 600;                 /* Ketebalan font */
+}
+
+/* Gaya untuk Grup Form */
+.form-group {
+    margin-bottom: 1rem;              /* Margin bawah untuk setiap grup form */
+}
+
+.form-group label {
+    display: block;                   /* Label ditampilkan sebagai blok */
+    margin-bottom: 0.5rem;            /* Margin bawah */
+    font-weight: 500;                 /* Ketebalan font */
+    color: var(--dark-gray);          /* Warna teks */
+}
+
+/* Gaya untuk Kontrol Form (Input Teks, Email, Password) */
+.form-control {
+    width: 100%;                      /* Lebar penuh */
+    padding: 0.75rem 1rem;            /* Padding di dalam input */
+    border: 1px solid var(--medium-gray); /* Border */
+    border-radius: 0.5rem;            /* Sudut membulat */
+    font-size: 1rem;                  /* Ukuran font */
+    font-family: 'Inter', sans-serif; /* Font */
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* Transisi untuk fokus */
+}
+
+.form-control:focus {
+    outline: none;                    /* Menghilangkan outline default saat fokus */
+    border-color: var(--primary-color); /* Warna border saat fokus */
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2); /* Bayangan saat fokus */
+}
+
+/* Gaya Dasar untuk Tombol */
+.btn {
+    display: inline-block;            /* Tombol ditampilkan sebagai inline-block */
+    padding: 0.75rem 1.5rem;          /* Padding */
+    border-radius: 0.5rem;            /* Sudut membulat */
+    font-size: 1rem;                  /* Ukuran font */
+    font-weight: 600;                 /* Ketebalan font */
+    text-align: center;               /* Teks di tengah */
+    text-decoration: none;            /* Menghilangkan garis bawah link */
+    cursor: pointer;                  /* Mengubah kursor menjadi pointer */
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* Transisi untuk hover/klik */
+    border: none;                     /* Menghilangkan border default */
+}
+
+/* Gaya untuk Tombol Primer */
+.btn-primary {
+    background-color: var(--primary-color); /* Warna latar belakang */
+    color: #fff;                      /* Warna teks */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan */
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark); /* Warna latar belakang saat hover */
+    transform: translateY(-1px);      /* Sedikit bergerak ke atas saat hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Bayangan yang lebih besar saat hover */
+}
+
+/* Gaya untuk Tombol Danger (Merah) */
+.btn-danger {
+    background-color: var(--error-color); /* Warna latar belakang */
+    color: #fff;                      /* Warna teks */
+}
+
+.btn-danger:hover {
+    background-color: #DC2626;        /* Warna merah yang lebih gelap saat hover */
+    transform: translateY(-1px);      /* Sedikit bergerak ke atas saat hover */
+}
+
+/* Gaya untuk Tombol Success (Hijau) */
+.btn-success {
+    background-color: var(--success-color); /* Warna latar belakang */
+    color: #fff;                      /* Warna teks */
+}
+
+.btn-success:hover {
+    background-color: #059669;        /* Warna hijau yang lebih gelap saat hover */
+    transform: translateY(-1px);      /* Sedikit bergerak ke atas saat hover */
+}
+
+/* Gaya untuk Tombol Sekunder */
+.btn-secondary {
+    background-color: var(--medium-gray); /* Warna latar belakang */
+    color: var(--dark-gray);          /* Warna teks */
+}
+
+.btn-secondary:hover {
+    background-color: #9CA3AF;        /* Warna abu-abu yang lebih gelap saat hover */
+    transform: translateY(-1px);      /* Sedikit bergerak ke atas saat hover */
+}
+
+/* Gaya untuk Aksi Form (Tombol-tombol di bagian bawah form) */
+.form-actions {
+    margin-top: 1.5rem;               /* Margin atas */
+    display: flex;                    /* Menggunakan flexbox */
+    justify-content: flex-end;        /* Tombol di kanan */
+    gap: 1rem;                        /* Jarak antar tombol */
+}
+
+/* Gaya untuk Pesan Sukses */
+.message {
+    background-color: #D1FAE5;        /* Latar belakang hijau terang */
+    color: var(--success-color);      /* Warna teks hijau */
+    padding: 1rem;                    /* Padding */
+    border-radius: 0.5rem;            /* Sudut membulat */
+    margin-bottom: 1.5rem;            /* Margin bawah */
+    border: 1px solid var(--success-color); /* Border hijau */
+    font-weight: 500;                 /* Ketebalan font */
+    max-width: 960px;                 /* Lebar maksimum */
+    margin: 2rem auto 0;              /* Margin atas, tengah horizontal, tanpa margin bawah */
+    box-shadow: var(--shadow);        /* Bayangan */
+}
+
+/* Gaya untuk Pesan Error */
+.error {
+    background-color: #FEE2E2;        /* Latar belakang merah terang */
+    color: var(--error-color);        /* Warna teks merah */
+    padding: 1rem;                    /* Padding */
+    border-radius: 0.5rem;            /* Sudut membulat */
+    margin-bottom: 1.5rem;            /* Margin bawah */
+    border: 1px solid var(--error-color); /* Border merah */
+    font-weight: 500;                 /* Ketebalan font */
+    max-width: 960px;                 /* Lebar maksimum */
+    margin: 2rem auto 0;              /* Margin atas, tengah horizontal, tanpa margin bawah */
+    box-shadow: var(--shadow);        /* Bayangan */
+}
+
+/* Styling Daftar Tugas */
+.task-list {
+    list-style: none;                 /* Menghilangkan bullet point daftar */
+    padding: 0;                       /* Menghilangkan padding default daftar */
+    margin-top: 2rem;                 /* Margin atas */
+}
+
+.task-item {
+    display: flex;                    /* Menggunakan flexbox untuk setiap item tugas */
+    align-items: center;              /* Item di tengah secara vertikal */
+    justify-content: space-between;   /* Memisahkan konten dan aksi tugas */
+    background-color: #fff;           /* Latar belakang putih */
+    padding: 1rem 1.5rem;             /* Padding */
+    margin-bottom: 0.75rem;           /* Margin bawah antar item */
+    border-radius: 0.75rem;           /* Sudut membulat */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Bayangan */
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* Transisi untuk hover */
+    border: 1px solid var(--light-gray); /* Border tipis */
+}
+
+.task-item:hover {
+    transform: translateY(-2px);      /* Sedikit bergerak ke atas saat hover */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Bayangan yang lebih besar saat hover */
+}
+
+.task-item.completed {
+    background-color: #F0FDF4;        /* Latar belakang hijau sangat terang untuk tugas selesai */
+    opacity: 0.8;                     /* Sedikit transparan */
+    border-left: 5px solid var(--success-color); /* Border kiri hijau */
+}
+
+.task-item-content {
+    flex-grow: 1;                     /* Konten tugas mengambil ruang yang tersedia */
+    display: flex;                    /* Menggunakan flexbox */
+    align-items: center;              /* Item di tengah secara vertikal */
+    gap: 1rem;                        /* Jarak antar item konten */
+}
+
+.task-item-content .task-name {
+    font-size: 1.1rem;                /* Ukuran font nama tugas */
+    font-weight: 500;                 /* Ketebalan font */
+    color: var(--text-color);         /* Warna teks */
+}
+
+.task-item.completed .task-name {
+    text-decoration: line-through;    /* Garis coret untuk tugas selesai */
+    color: var(--dark-gray);          /* Warna teks abu-abu gelap */
+}
+
+.task-actions {
+    display: flex;                    /* Menggunakan flexbox untuk tombol aksi */
+    gap: 0.75rem;                     /* Jarak antar tombol aksi */
+}
+
+.task-actions .btn {
+    padding: 0.6rem 1rem;             /* Padding tombol aksi */
+    font-size: 0.9rem;                /* Ukuran font tombol aksi */
+    border-radius: 0.5rem;            /* Sudut membulat */
+}
+
+/* Gaya untuk Bagian Profil */
+.profile-section form {
+    max-width: 500px;                 /* Lebar maksimum form profil */
+    margin: 0 auto;                   /* Tengah horizontal */
+    padding: 2rem;                    /* Padding */
+    background-color: #fff;           /* Latar belakang putih */
+    border-radius: var(--border-radius); /* Sudut membulat */
+    box-shadow: var(--shadow);        /* Bayangan */
+}
+
+/* Gaya untuk Footer */
+footer {
+    margin-top: 2rem;                 /* Margin atas */
+    padding: 1.5rem;                  /* Padding */
+    text-align: center;               /* Teks di tengah */
+    background-color: var(--dark-gray); /* Latar belakang abu-abu gelap */
+    color: #fff;                      /* Warna teks putih */
+    border-top-left-radius: var(--border-radius);  /* Sudut atas kiri membulat */
+    border-top-right-radius: var(--border-radius); /* Sudut atas kanan membulat */
+    font-size: 0.9rem;                /* Ukuran font */
+    box-shadow: var(--shadow);        /* Bayangan */
+}
+
+footer a {
+    color: var(--accent-color);       /* Warna link */
+    text-decoration: none;            /* Menghilangkan garis bawah link */
+    font-weight: 500;                 /* Ketebalan font */
+}
+
+footer a:hover {
+    text-decoration: underline;       /* Garis bawah saat hover */
+}
+
+/* Penyesuaian Responsif */
+/* Media query untuk layar dengan lebar maksimum 768px (tablet dan di bawahnya) */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;              /* Ukuran font judul header lebih kecil */
+    }
+
+    header p {
+        font-size: 1rem;              /* Ukuran font paragraf header lebih kecil */
+    }
+
+    .container {
+        margin: 1rem;                 /* Margin kontainer lebih kecil */
+        padding: 1rem;                /* Padding kontainer lebih kecil */
+    }
+
+    .task-item {
+        flex-direction: column;       /* Item tugas ditumpuk secara vertikal */
+        align-items: flex-start;      /* Item sejajar di awal */
+        gap: 0.75rem;                 /* Jarak antar item */
+    }
+
+    .task-actions {
+        width: 100%;                  /* Tombol aksi mengambil lebar penuh */
+        justify-content: flex-end;    /* Tombol aksi di kanan */
+    }
+
+    .btn {
+        padding: 0.6rem 1.2rem;       /* Padding tombol lebih kecil */
+        font-size: 0.9rem;            /* Ukuran font tombol lebih kecil */
+    }
+}
+
+/* Media query untuk layar dengan lebar maksimum 480px (ponsel) */
+@media (max-width: 480px) {
+    nav {
+        flex-direction: column;       /* Navigasi ditumpuk secara vertikal */
+        gap: 0.5rem;                  /* Jarak antar item navigasi lebih kecil */
+    }
+    nav a, .nav-button {
+        padding: 0.75rem 1rem;        /* Padding navigasi */
+        width: 80%;                   /* Lebar navigasi 80% */
+        margin: 0 auto;               /* Tengah horizontal */
+    }
+    .form-actions {
+        flex-direction: column;       /* Aksi form ditumpuk secara vertikal */
+        gap: 0.75rem;                 /* Jarak antar tombol aksi lebih kecil */
+    }
+    .btn {
+        width: 100%;                  /* Tombol mengambil lebar penuh */
+    }
+}
